@@ -32,6 +32,11 @@
       <version>${aspectj.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.chatopera.compose4j</groupId>
+      <artifactId>compose4j</artifactId>
+      <version>1.0.0</version>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>
@@ -126,7 +131,19 @@
       </plugins>
     </pluginManagement>
   </build>
-
+  <repositories>
+    <repository>
+      <id>chatopera</id>
+      <name>Chatopera Inc.</name>
+      <url>https://nexus.chatopera.com/repository/maven-public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <reporting>
     <plugins>
       <plugin>
