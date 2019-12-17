@@ -14,7 +14,7 @@
 
 - [InteliJ IDEA](https://www.jetbrains.com/idea/) (使用社区免费版或付费专业版都可以)
 
-## 运行
+## 导入集成开发环境
 
 - 生成 IDEA 项目描述文件
 
@@ -25,6 +25,14 @@
 ![](./assets/1.png)
 
 - 导入 IDEA
+
+## 执行代码
+
+- 使用 Bash 脚本
+
+```
+./scripts/run.sh com.chatopera.tutorials.java.aop.Sample
+```
 
 ## 开源许可协议
 
