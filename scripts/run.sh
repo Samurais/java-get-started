@@ -33,7 +33,7 @@ if [ -f $javaClassPath ]; then
     if [ $? -eq 0 ]; then
         echo "Compiled successfully."
         set -x
-        java -classpath "`pwd`" $javaClassCompiled
+        java -ea -classpath "`pwd`" $javaClassCompiled
         set +x
     else
         exit $?
