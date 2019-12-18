@@ -13,6 +13,7 @@
 package com.chatopera.tutorials.java.java8;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public class Sample {
     public static class Name {
@@ -32,6 +33,11 @@ public class Sample {
         private Name name;
         private int age;
         private String password;
+
+
+        public void greetings(Function<String, String> fn) {
+            fn.apply("Hello, my name is " + this.getName().get().getName().get());
+        }
 
         public Optional<Name> getName() {
             return Optional.ofNullable(name);
@@ -54,14 +60,21 @@ public class Sample {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // lambdas
-        Optional<String> opt = Optional.of("foo");
-        opt.ifPresent(System.out::println);
+        Thread t = new Thread(() -> System.out.println("Hello."));
+        t.run();
+
+        // Function
+        Person person = new Person("john", 26);
+        person.greetings(s -> {
+            System.out.println("Apply:" + s);
+            return s;
+        });
 
         // Optional
-        Person person = new Person("john", 26);
-        Optional<Person> personOptional = Optional.of(person);
+        Optional<Person> personOptional = Optional.ofNullable(person);
+        personOptional.ifPresent(p -> System.out.println("personOptional getAge:" + p.getAge().get()));
 
         // flatMap
         String name = personOptional
@@ -69,7 +82,7 @@ public class Sample {
                 .flatMap(Name::getName)
                 .orElse("");
 
-        assert name.equals("john"): "name should be equal to john";
+        assert name.equals("john") : "name should be equal to john";
 
     }
 }
