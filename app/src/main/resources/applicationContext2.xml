@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!--
+  ~ Copyright (C) 2019. Chatopera Inc, <https://www.chatopera.com>. All rights reserved.
+  ~  This software and related documentation are provided under a license agreement containing
+  ~  restrictions on use and disclosure and are protected by intellectual property laws.
+  ~  Except as expressly permitted in your license agreement or allowed by law, you may not use,
+  ~  copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform,
+  ~  publish, or display any part, in any form, or by any means. Reverse engineering, disassembly,
+  ~  or decompilation of this software, unless required by law for interoperability, is prohibited.
+  ~
+  ~
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="sample" class="com.chatopera.tutorials.java.spring.Sample">
+        <property name="message" value="Hello World!" />
+    </bean>
+
+    <bean id="interest" class="com.chatopera.tutorials.java.spring.Interest">
+        <property name="sample">
+            <ref bean="sample"/>
+        </property>
+    </bean>
+</beans>

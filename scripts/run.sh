@@ -5,6 +5,9 @@
 
 # constants
 baseDir=$(cd `dirname "$0"`;pwd)
+rootDir=$(cd $baseDir/..;pwd)
+CLASSPATH_EXT="$rootDir/app/src/main/resources:$rootDir/tools/spring/spring-aop-5.1.0.RELEASE.jar:$rootDir/tools/spring/spring-context-5.1.0.RELEASE.jar:$rootDir/tools/spring/spring-expression-5.1.0.RELEASE.jar:$rootDir/tools/spring/spring-beans-5.1.0.RELEASE.jar:$rootDir/tools/spring/spring-core-5.1.0.RELEASE.jar:$rootDir/tools/spring/spring-jcl-5.1.0.RELEASE.jar"
+
 # functions
 
 # main 
@@ -28,12 +31,12 @@ echo "Compile java class " `pwd`/$javaClassPath "to" `pwd`/$javaClassCompiled ".
 cd $baseDir/../app/src/main/java
 if [ -f $javaClassPath ]; then
     set -x
-    javac $javaClassPath
+    javac -classpath "$CLASSPATH_EXT:`pwd`" $javaClassPath
     set +x
     if [ $? -eq 0 ]; then
         echo "Compiled successfully."
         set -x
-        java -ea -classpath "`pwd`" $javaClassCompiled
+        java -ea -classpath "$CLASSPATH_EXT:`pwd`" $javaClassCompiled
         set +x
     else
         exit $?
